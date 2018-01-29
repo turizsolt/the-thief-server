@@ -7,7 +7,7 @@ import * as bodyParser from 'body-parser';
 
 import index from './routes/index';
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
