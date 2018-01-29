@@ -4,10 +4,14 @@ import favicon from 'serve-favicon';
 import * as logger from 'morgan';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
+import * as mongoose from 'mongoose';
+import config from './configs/config';
 
 import index from './routes/index';
 
 const app = express();
+
+mongoose.connect(config.database.url);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
