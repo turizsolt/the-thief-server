@@ -3,6 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <script src="socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      socket.emit('check', {latitude: 47, longitude: 19, altitude: 102, verticalAccuracy: 6, horisontalAccuracy: 6, speed: 4.1, timestamp: new Date(), who: "Matyi", displayCharacter: "M"});
+      socket.on("coordinates", function(data) {
+          console.log("coordinates", data);
+      });
+    </script>
     <title>Express</title>
   </head>
   <body>
