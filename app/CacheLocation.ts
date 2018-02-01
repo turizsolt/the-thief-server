@@ -58,7 +58,7 @@ export default class CacheLocation {
 
             that.serveLocation.retrieveCops(that.thief, (err, result) => {
                 debug('emit coordinates');
-                that.socketIo.emit('coordinates',{cops: result.filter(x => x._id), thief: that.thiefSend});
+                that.socketIo.emit('coordinates',{cops: result.filter(x => x._id).map(f), thiefs: that.thiefSend.map(f)});
             });
         }
 
@@ -72,4 +72,12 @@ export default class CacheLocation {
             });
         }
     }
+}
+
+function f(x) {
+    console.log(x);
+    if(x.timestamp && x.timestamp.getTime) {
+        x.timestamp = x.timestamp.getTime();
+    }
+    return x;
 }
