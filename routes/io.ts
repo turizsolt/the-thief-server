@@ -21,6 +21,7 @@ function initRoutes(socketIo):void {
 
 function onConnection(socket:Socket):void {
     debug('a user connected');
+    socket.emit('connected');
 
     socket.on('disconnect', onDisconnect);
     socket.on('start', onStart);
